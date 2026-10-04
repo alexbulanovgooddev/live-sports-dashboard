@@ -1,0 +1,36 @@
+# Зависимости
+node_modules/
+
+# Сборка и кэш (frontend — Vite, backend — tsc)
+dist/
+build/
+.vite/
+.turbo/
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# Тесты
+coverage/
+
+# Логи
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Переменные окружения
+.env
+.env.*
+!.env.example
+
+# ОС и редакторы
+.DS_Store
+Thumbs.db
+.idea/
+.fleet/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

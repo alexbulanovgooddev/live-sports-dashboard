@@ -1,0 +1,31 @@
+{
+	"name": "live-sports-dashboard",
+	"private": true,
+	"type": "module",
+	"packageManager": "pnpm@11.15.0",
+	"engines": {
+		"node": ">=24"
+	},
+	"devDependencies": {
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.8",
+		"prettier": "catalog:",
+		"typescript": "catalog:"
+	},
+	"scripts": {
+		"prepare": "husky",
+		"dev": "pnpm run \"/^dev:/\"",
+		"dev:backend": "pnpm --filter @live-sports-dashboard/backend dev",
+		"dev:frontend": "pnpm --filter @live-sports-dashboard/frontend dev",
+		"build": "pnpm -r build",
+		"lint": "pnpm -r lint",
+		"typecheck": "pnpm -r --no-bail typecheck",
+		"format": "prettier --check .",
+		"format:fix": "prettier --write .",
+		"db:up": "docker compose up -d --wait",
+		"db:down": "docker compose down"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,mjs,cjs,css,scss,json,md,yaml,yml}": "prettier --check"
+	}
+}

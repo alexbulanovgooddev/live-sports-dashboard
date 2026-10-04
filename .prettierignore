@@ -1,0 +1,9 @@
+node_modules
+pnpm-lock.yaml
+**/dist
+**/build
+**/coverage
+**/.vite
+**/.turbo
+*.log*
+.env

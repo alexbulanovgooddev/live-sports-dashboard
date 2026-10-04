@@ -1,0 +1,26 @@
+{
+	"name": "@live-sports-dashboard/shared",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@eslint/js": "catalog:",
+		"eslint": "catalog:",
+		"eslint-config-prettier": "catalog:",
+		"prettier": "catalog:",
+		"typescript": "catalog:",
+		"typescript-eslint": "catalog:"
+	},
+	"lint-staged": {
+		"*.{ts,js,mjs}": "eslint",
+		"*.{ts,js,mjs,json,md}": "prettier --check --ignore-path ../../.prettierignore"
+	}
+}

@@ -1,0 +1,19 @@
+packages:
+  - frontend
+  - backend
+  - packages/*
+
+# Общие версии зависимостей: в package.json пакетов указывать "catalog:"
+catalog:
+  '@eslint/js': ^10.0.1
+  '@types/express': ^5.0.0
+  # мажорная версия совпадает с Node из .nvmrc
+  '@types/node': ^24.0.0
+  eslint: ^10.11.0
+  eslint-config-prettier: ^10.1.8
+  prettier: ^3.9.9
+  # typescript-eslint пока поддерживает только typescript <6.1
+  typescript: ^6.0.3
+  typescript-eslint: ^8.64.0
+
+engineStrict: true

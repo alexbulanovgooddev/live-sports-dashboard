@@ -1,0 +1,30 @@
+{
+	"name": "@live-sports-dashboard/backend",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "node --env-file-if-exists=.env --watch src/index.ts",
+		"start": "node --env-file-if-exists=.env src/index.ts",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@live-sports-dashboard/shared": "workspace:*",
+		"express": "^5.2.1"
+	},
+	"devDependencies": {
+		"@eslint/js": "catalog:",
+		"@types/express": "catalog:",
+		"@types/node": "catalog:",
+		"eslint": "catalog:",
+		"eslint-config-prettier": "catalog:",
+		"prettier": "catalog:",
+		"typescript": "catalog:",
+		"typescript-eslint": "catalog:"
+	},
+	"lint-staged": {
+		"*.{ts,js,mjs}": "eslint",
+		"*.{ts,js,mjs,json,md}": "prettier --check --ignore-path ../../.prettierignore"
+	}
+}
