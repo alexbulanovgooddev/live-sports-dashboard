@@ -3,6 +3,9 @@ packages:
   - backend
   - packages/*
 
+allowBuilds:
+  esbuild: false
+
 # Общие версии зависимостей: в package.json пакетов указывать "catalog:"
 catalog:
   '@eslint/js': ^10.0.1
