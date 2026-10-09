@@ -35,4 +35,14 @@ Backend поднимается на `http://localhost:8000`, проверка �
 | `pnpm db:up`      | поднимает Postgres в Docker       |
 | `pnpm db:down`    | останавливает Postgres            |
 
+## Drizzle Studio
+
+Просмотр и правка данных в локальной БД через браузер. Postgres должен быть запущен (`pnpm db:up`).
+
+```sh
+pnpm --filter @live-sports-dashboard/backend db:studio
+```
+
+Из папки `backend` — `pnpm db:studio`. После старта откройте `https://local.drizzle.studio`, остановка — `Ctrl+C`. `DATABASE_URL` берётся из `backend/.env`.
+
 Версии общих зависимостей заданы в `catalog` в `pnpm-workspace.yaml`.
