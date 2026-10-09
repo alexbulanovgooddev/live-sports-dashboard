@@ -72,6 +72,12 @@ matchesRouter.post('/', async (req, res) => {
 			.returning()
 
 		res.status(201).json({ data: event })
+
+		try {
+			res.app.locals.broadcastMatchCreated?.(event)
+		} catch (error) {
+			console.error('Failed to broadcast match_created', error)
+		}
 	} catch (error) {
 		console.error('Failed to create match', error)
 		res.status(500).json({ error: 'Failed to create match.' })
