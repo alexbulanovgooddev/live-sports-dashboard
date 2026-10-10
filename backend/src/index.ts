@@ -2,6 +2,7 @@ import { createServer } from 'node:http'
 import express, { type ErrorRequestHandler } from 'express'
 import { matchesRouter } from './routes/matches.ts'
 import { attachWebSocketServer } from './ws/server.ts'
+import { securityMiddlware } from './arcjet.ts'
 
 const PORT = Number(process.env.PORT) || 8000
 const HOST = process.env.HOST || '0.0.0.0'
@@ -10,11 +11,13 @@ const app = express()
 
 const server = createServer(app)
 
-app.use(express.json())
-
 app.get('/health', (req, res) => {
 	res.json({ status: 'ok' })
 })
+
+app.use(securityMiddlware())
+
+app.use(express.json())
 
 app.use('/matches', matchesRouter)
 
