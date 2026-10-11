@@ -1,6 +1,7 @@
 import { createServer } from 'node:http'
 import express, { type ErrorRequestHandler } from 'express'
 import { matchesRouter } from './routes/matches.ts'
+import { commentsRouter } from './routes/comments.ts'
 import { attachWebSocketServer } from './ws/server.ts'
 import { securityMiddlware } from './arcjet.ts'
 
@@ -20,6 +21,7 @@ app.use(securityMiddlware())
 app.use(express.json())
 
 app.use('/matches', matchesRouter)
+app.use('/matches/:id/comments', commentsRouter)
 
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 	if (res.headersSent) {
@@ -38,8 +40,10 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 app.use(errorHandler)
 
-const { broadcastMatchCreated } = attachWebSocketServer(server)
+const { broadcastMatchCreated, broadcastCommentCreated } =
+	attachWebSocketServer(server)
 app.locals.broadcastMatchCreated = broadcastMatchCreated
+app.locals.broadcastCommentCreated = broadcastCommentCreated
 
 server.listen(PORT, HOST, () => {
 	const baseUrl =

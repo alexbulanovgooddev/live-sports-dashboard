@@ -11,7 +11,7 @@ export const MATCH_STATUS = {
 } as const satisfies Record<string, MatchStatus>
 
 // верхняя граница integer/serial в Postgres
-const INT4_MAX = 2_147_483_647
+export const INT4_MAX = 2_147_483_647
 
 export const MAX_LIST_LIMIT = 100
 

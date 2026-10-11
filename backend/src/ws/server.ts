@@ -1,10 +1,12 @@
 import type { Server } from 'node:http'
 import type { Duplex } from 'node:stream'
 import type { matches } from '../schema/matches.ts'
+import type { comments } from '../schema/comments.ts'
 import { WebSocket, WebSocketServer } from 'ws'
 import { wsArcjet } from '../arcjet.ts'
 
 type Match = typeof matches.$inferSelect
+type Comment = typeof comments.$inferSelect
 
 const MAX_PAYLOAD = 1024 * 1024
 
@@ -81,5 +83,9 @@ export function attachWebSocketServer(server: Server) {
 		broadcast(wss, { type: 'match_created', data: match })
 	}
 
-	return { broadcastMatchCreated }
+	function broadcastCommentCreated(comment: Comment) {
+		broadcast(wss, { type: 'comment_created', data: comment })
+	}
+
+	return { broadcastMatchCreated, broadcastCommentCreated }
 }
